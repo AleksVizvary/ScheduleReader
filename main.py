@@ -3,7 +3,6 @@ from cal_functions import main_func
 
 event_name = "Praca"
 employee_name = input("Wpisz się (tak jak w grafiku): ")
-# employee_name = "Marcin Chełpa"
 
 start = False
 while not start:
