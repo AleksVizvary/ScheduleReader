@@ -1,3 +1,4 @@
+import pars_functions
 from pars_functions import extract_days_data
 from icalendar import Calendar, Event, vCalAddress, vText
 from pathlib import Path
@@ -54,5 +55,26 @@ def main_func(employee_name, event_name):
     e = open('MyCalendar/my_grafik.ics', 'rb')
     ecal = Calendar.from_ical(e.read())
     e.close()
+
+    return True
+
+def start(employee_name, event_name):
+
+    start = False
+    while not start:
+        try:
+            if employee_name not in pars_functions.xslx_to_pandas().values:
+                employee_name = input("Wpisz się kurwa poprawnie: ")
+
+        except FileNotFoundError:
+            print("Nie dałeś grafiku, jełopie")
+            print("Dodaj i zacznij od nowa")
+            quit()
+
+        else:
+            start = True
+
+    else:
+        main_func(employee_name, event_name)
 
     return True
