@@ -6,9 +6,10 @@ pd.set_option("display.max_rows", 500)
 pd.set_option("display.max_columns", 500)
 
 
-def xslx_to_pandas(file_name):
+def xslx_to_pandas():
     try:
-        file_path = pathlib.Path(__file__).parent.resolve()/file_name
+        file_path = pathlib.Path(__file__).parent.resolve()/"TuGrafik"/"grafik.xlsx"
+
     except Exception as e:
         print(e)
     else:
@@ -28,11 +29,6 @@ def find_employee_data(pandas_file, employee_name):
 
     df = pandas_file.loc[rows]
     df.index = range(df.index.size)
-    if employee_name not in df.values:
-        print("Wprowadziłeś złą nazwę pracownika... ")
-        print("Popraw to.")
-        return False
-
     return df
 
 def format_to_ical(hours, date):
@@ -46,12 +42,10 @@ def format_to_ical(hours, date):
 
     return {"dtstart": start, "dtend": end}
 
-def extract_days_data(employee_name, file_name):
+def extract_days_data(employee_name):
 
-    pandas_schedule = xslx_to_pandas(file_name)
+    pandas_schedule = xslx_to_pandas()
     employee_df = find_employee_data(pandas_schedule, employee_name)
-    if not employee_df:
-        return False
 
     dates_dict = {}
     for idx, row in employee_df.iterrows():

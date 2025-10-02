@@ -3,7 +3,6 @@ from icalendar import Calendar, Event, vCalAddress, vText
 from pathlib import Path
 import os
 
-
 def add_event(start, end, event_name):
     event = Event()
     event.add('summary', event_name)
@@ -32,9 +31,9 @@ def add_days_to_cal(dates_dict, event_name):
 
     return cal
 
-def main_func(employee_name, file_name, event_name):
+def main_func(employee_name, event_name):
 
-    dates_dict = extract_days_data(employee_name, file_name)
+    dates_dict = extract_days_data(employee_name)
     if not dates_dict:
         return False
 
