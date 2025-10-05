@@ -2,7 +2,7 @@
 
 ## 1. Install Python
 
-Go to python.org/downloads in your browser and install Python 3.
+Go to pythdon.org/downloads in your browser and install Python 3.
 
 ## 2. Add your schedule (kinda specific format tho)
 

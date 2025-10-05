@@ -1,14 +1,23 @@
 import datetime
-import pathlib
 import pandas as pd
+import os, sys
+import pathlib
 
 pd.set_option("display.max_rows", 500)
 pd.set_option("display.max_columns", 500)
 
 
 def xslx_to_pandas():
+
+    base = pathlib.Path(pathlib.Path(__file__).parent.parent.resolve())
+
+
+    filename = "grafik.xlsx"
+
+
     try:
-        file_path = pathlib.Path(__file__).parent.resolve()/"TuGrafik"/"grafik.xlsx"
+        file_path = os.path.join(base, filename)
+
 
     except Exception as e:
         print(e)
@@ -42,9 +51,13 @@ def format_to_ical(hours, date):
 
     return {"dtstart": start, "dtend": end}
 
-def extract_days_data(employee_name):
+def extract_days_data(employee_name, pandas_schedule=None):
+    if pandas_schedule is None:
+        pandas_schedule = xslx_to_pandas()
 
-    pandas_schedule = xslx_to_pandas()
+    else:
+        pass
+
     employee_df = find_employee_data(pandas_schedule, employee_name)
 
     dates_dict = {}
