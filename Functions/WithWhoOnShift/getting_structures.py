@@ -1,7 +1,7 @@
-
+from Functions.WithWhoOnShift.classes import Cell
 import datetime
 
-# def format_date_format(date):
+
 def find_date_range(date, schedule):
 
     mask = schedule.isin([date]).any(axis=1)
@@ -27,4 +27,14 @@ def find_existing_days(schedule):
                     for col in schedule.columns\
                     if isinstance(schedule.loc[idx, col], datetime.datetime)]
     return dates
+
+def find_names(schedule, name):
+    potential_names = []
+    for i in schedule.index:
+        for c in schedule.columns:
+            cell = Cell(schedule.loc[i, c])
+            if cell.isValid(name):
+                potential_names.append(schedule.loc[i, c])
+
+    return potential_names
 
