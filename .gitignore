@@ -1,5 +1,28 @@
-__pycache__/
-*.pyc
+# IDE / system
+.idea/
 .DS_Store
-grafik.xlsx
-MyCalendar/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+
+# Sekrety i konfiguracja lokalna
+.env
+.env.*
+!.env.example
+
+# Pliki tymczasowe
+*.log
+*.tmp
+~$*.xlsx
+*.xsls
+/DataHolder/EmployeeNamesList.txt
+
+# Dane generowane przez aplikację
+/DataHolder/
+/icsHolder/
+/program/icsHolder/
+/program/DataHolder/
