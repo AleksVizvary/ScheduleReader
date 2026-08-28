@@ -4,7 +4,7 @@ from saving_file import *
 # from open_file import *
 
 event_name = "Praca"
-adress = "ul. Pawia 5, 31-154, Kraków, Polska"
+adress = "Kraków, Polska"
 
 def main(i, path=None):
     with open("../EmployeeNamesList.txt", "r") as file:
@@ -27,22 +27,3 @@ def main(i, path=None):
 path = None
 # path = get_path()
 main(1, path)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
