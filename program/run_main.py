@@ -7,8 +7,8 @@ event_name = "Praca"
 adress = "Kraków, Polska"
 
 def main(i, path=None):
-    with open("../DataHolder/EmployeeNamesList.txt", "r") as file:
-        employee_list = [p for p in file]
+    with open("../EmployeeNamesList.txt", "r") as file:
+        employee_list = [p.split(';') for p in file][0]
     boss_name = employee_list[7]
     client = employee_list[i]
 
