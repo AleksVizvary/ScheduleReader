@@ -1,13 +1,16 @@
 from parsing_xlsx import *
 from setting_calendar import *
 from saving_file import *
+from pathlib import Path
 # from open_file import *
 
 event_name = "Praca"
 adress = "Kraków, Polska"
 
+ROOT = Path(__file__).resolve().parent.parent
+
 def main(i, path=None):
-    with open("../EmployeeNamesList.txt", "r") as file:
+    with open(ROOT / "EmployeeNamesList.txt", "r") as file:
         employee_list = [p.split(';')for p in file][0]
     boss_name = employee_list[7]
     client = employee_list[i]
@@ -16,7 +19,7 @@ def main(i, path=None):
     file_name = f"grafik_{miesiac}.xlsx"
     file_path = "DataHolder/" + file_name
     if not path:
-        path = Path(__file__).parent.resolve().parent.resolve() / file_path
+        path = ROOT / file_path
 
     schedule_xslx = pd.read_excel(path)
     schedule_list = parse_pandas_to_dict(schedule_xslx, employee_list)
@@ -24,6 +27,5 @@ def main(i, path=None):
     cal = add_days_to_cal(schedule_list, boss_name, client, adress, event_name)
     save_file(cal, client, miesiac)
 
-path = None
-# path = get_path()
-main(1, path)
+if __name__ == "__main__":
+    main(1)
