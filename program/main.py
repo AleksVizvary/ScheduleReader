@@ -21,11 +21,16 @@ def main(i, path=None):
     if not path:
         path = ROOT / file_path
 
+    if not Path(path).exists():
+        print(f"Brak pliku grafiku: {path}")
+        return False
+
     schedule_xslx = pd.read_excel(path)
     schedule_list = parse_pandas_to_dict(schedule_xslx, employee_list)
 
     cal = add_days_to_cal(schedule_list, boss_name, client, adress, event_name)
     save_file(cal, client, miesiac)
+    return True
 
 if __name__ == "__main__":
     main(1)
