@@ -10,7 +10,7 @@ def save_file(cal, client, miesiac):
         pass
 
     print("Gotowy plik w folderze icsHolder")
-    file_name = f"grafik_{miesiac}_{client.replace(" ", "_")}.ics"
+    file_name = f"grafik_{miesiac}_{client.replace(' ', '_')}.ics"
     f = open(os.path.join(directory, file_name), 'wb')
     f.write(cal.to_ical())
     f.close()
